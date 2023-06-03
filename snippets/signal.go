@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"syscall"
 )
 
 func HandlerSignal() {
@@ -17,6 +18,7 @@ func HandlerSignal() {
 	// if we're not ready to receive when the signal is sent.
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
+	signal.Notify(c, syscall.SIGTERM)
 	// Passing no signals to Notify means that
 	// all signals will be sent to the channel.
 	// signal.Notify(c)
