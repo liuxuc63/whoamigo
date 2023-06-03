@@ -6,6 +6,7 @@ import (
 	"io"
 	"os/exec"
 	"sync"
+	"time"
 )
 
 func Ping() {
@@ -29,6 +30,12 @@ func Ping() {
 		fmt.Println(err)
 		return
 	}
+
+	go func() {
+		time.Sleep(time.Second * 5)
+		cmd.Process.Kill()
+		//cmd.Process.Signal(syscall.SIGINT)
+	}()
 
 	// Goroutine to read the stdout of the command and print it synchronized.
 	go func() {
@@ -62,4 +69,5 @@ func Ping() {
 		fmt.Println(err)
 		return
 	}
+
 }

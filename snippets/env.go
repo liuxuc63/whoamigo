@@ -7,6 +7,14 @@ import (
 	"strings"
 )
 
+func Whereis() {
+	println("HOME=", os.Getenv("HOME"))
+	println("PWD=", os.Getenv("PWD"))
+	wd, _ := os.Getwd()
+	println("Work dir=", wd)
+
+}
+
 func TestEnv() {
 	// Open the file
 	file, err := os.Open("conf/env.cfg")
