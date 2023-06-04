@@ -12,6 +12,8 @@ func Whereis() {
 	println("PWD=", os.Getenv("PWD"))
 	wd, _ := os.Getwd()
 	println("Work dir=", wd)
+	exe, _ := os.Executable()
+	println("AppName=", exe)
 
 }
 
