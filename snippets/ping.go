@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"os"
 	"os/exec"
 	"sync"
 	"time"
@@ -15,8 +16,10 @@ func Ping() {
 
 	// Create a command to run the shell command.
 	cmd := exec.Command("ping", "zyb.bur.ink")
+	//cmd := exec.Command("bash", "-c", "echo 'sleep 2' && sleep 2 && ls /tmp/error1234 && ping zyb.bur.ink")
 	//cmd.Process.Signal(syscall.SIGINT)
 
+	cmd.Stderr = os.Stderr // will print error to terminal
 	// Create a pipe to capture the stdout of the command.
 	stdoutPipe, err := cmd.StdoutPipe()
 	if err != nil {
@@ -66,7 +69,7 @@ func Ping() {
 	// Wait for the command to finish.
 	err = cmd.Wait()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("cmd error:", err)
 		return
 	}
 
