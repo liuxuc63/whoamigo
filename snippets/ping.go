@@ -42,7 +42,8 @@ func Ping() {
 
 	// Goroutine to read the stdout of the command and print it synchronized.
 	go func() {
-		defer stdoutPipe.Close()
+		//Wait will close the pipe after seeing the command exit, so most callers need not close the pipe themselves.
+		//defer stdoutPipe.Close()
 
 		// Read the stdout of the command.
 		reader := bufio.NewReader(stdoutPipe)
@@ -72,5 +73,4 @@ func Ping() {
 		fmt.Println("cmd error:", err)
 		return
 	}
-
 }
