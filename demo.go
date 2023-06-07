@@ -3,6 +3,9 @@ package main
 import "github.com/traefik/whoami/snippets"
 
 func main() {
+	snippets.RuneWaitX('x')
+	snippets.RuneWaitX('b')
+	snippets.RuneWaitX('X')
 	snippets.Whereis()
 	//snippets.Ping()
 	//snippets.TestEnv()

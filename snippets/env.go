@@ -7,6 +7,14 @@ import (
 	"strings"
 )
 
+func RuneWaitX(x rune) {
+	if x == 'x' || x == 'X' {
+		fmt.Printf("I got you %c\n", x)
+	} else {
+		fmt.Printf("Your are fake %c\n", x)
+	}
+}
+
 func Whereis() {
 	println("HOME=", os.Getenv("HOME"))
 	println("PWD=", os.Getenv("PWD"))
